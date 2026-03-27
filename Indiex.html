@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#080410;font-family:'Cormorant Garamond',Georgia,serif;overflow:hidden}
+.card{position:relative;width:min(420px,95vw);background:#fdf5ee;border-radius:2px;box-shadow:0 50px 120px rgba(0,0,0,.7),0 0 0 1px rgba(140,60,100,.18);overflow:hidden;animation:rise 1.4s cubic-bezier(.22,1,.36,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(60px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.top{position:relative;height:360px;background:#080410;overflow:hidden}
+.glow{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:360px;height:180px;background:radial-gradient(ellipse,rgba(140,40,180,.2) 0%,transparent 70%);pointer-events:none}
+.stars{position:absolute;inset:0;pointer-events:none}
+.s{position:absolute;background:white;border-radius:50%;animation:tw ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.12}50%{opacity:1}}
+.petal{position:absolute;opacity:0;animation:pf linear infinite;pointer-events:none;border-radius:60% 0 60% 0}
+@keyframes pf{0%{opacity:0;transform:translateY(0) rotate(0deg)}8%{opacity:.6}90%{opacity:.25}100%{opacity:0;transform:translateY(-220px) rotate(210deg) translateX(25px)}}
+.bouquet{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:460px;animation:bloomUp 1.9s cubic-bezier(.22,1,.36,1) .5s both}
+@keyframes bloomUp{from{opacity:0;transform:translateX(-50%) translateY(50px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.body{padding:22px 40px 28px;background:#fdf5ee}
+.orn{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.ol{flex:1;height:.5px;background:linear-gradient(90deg,transparent,#b0607a,transparent)}
+.og{width:5px;height:5px;background:#b0607a;transform:rotate(45deg);flex-shrink:0}
+.name{text-align:center;font-family:'Playfair Display',serif;font-size:36px;font-weight:400;font-style:italic;color:#1e0810;letter-spacing:1px;margin-bottom:16px}
+.poem{text-align:center;margin-bottom:20px}
+.poem p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15.5px;line-height:2;color:#2a100c;font-weight:300;letter-spacing:.3px}
+.wish{display:block;text-align:center;font-family:'Playfair Display',serif;font-style:normal;font-size:12px;font-weight:400;color:#b0607a;letter-spacing:3px;text-transform:uppercase;margin-top:4px}
+.orn2{display:flex;align-items:center;gap:10px;margin-top:18px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="stars" id="stars"></div>
+    <div class="glow"></div>
+    <div class="petal" style="width:8px;height:6px;background:#dd88bb;left:18%;top:65%;animation-duration:5.4s;animation-delay:.2s"></div>
+    <div class="petal" style="width:6px;height:5px;background:#ffeeaa;left:42%;top:72%;animation-duration:4.8s;animation-delay:1.3s"></div>
+    <div class="petal" style="width:8px;height:6px;background:#bbaaff;left:70%;top:68%;animation-duration:6.1s;animation-delay:.7s"></div>
+    <div class="petal" style="width:5px;height:4px;background:#ffbbcc;left:80%;top:74%;animation-duration:5.9s;animation-delay:2s"></div>
+    <div class="petal" style="width:7px;height:5px;background:#aaeeff;left:10%;top:78%;animation-duration:5s;animation-delay:2.5s"></div>
+    <div class="petal" style="width:6px;height:5px;background:#ffddbb;left:88%;top:60%;animation-duration:4.6s;animation-delay:.9s"></div>
+    <div class="petal" style="width:7px;height:5px;background:#ccffaa;left:55%;top:80%;animation-duration:5.7s;animation-delay:1.6s"></div>
+
+    <svg class="bouquet" viewBox="0 0 460 250" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="gRose"   cx="35%" cy="35%" r="65%"><stop offset="0%" stop-color="#ffb8d0"/><stop offset="100%" stop-color="#c4254a"/></radialGradient>
+        <radialGradient id="gPeony"  cx="35%" cy="35%" r="65%"><stop offset="0%" stop-color="#ffd6e8"/><stop offset="100%" stop-color="#e8568a"/></radialGradient>
+        <radialGradient id="gOrchid" cx="35%" cy="35%" r="65%"><stop offset="0%" stop-color="#e8ccff"/><stop offset="100%" stop-color="#7722bb"/></radialGradient>
+        <radialGradient id="gDahlia" cx="35%" cy="35%" r="65%"><stop offset="0%" stop-color="#ffc8a0"/><stop offset="100%" stop-color="#cc4411"/></radialGradient>
+        <radialGradient id="gTulip"  cx="35%" cy="35%" r="65%"><stop offset="0%" stop-color="#fff0aa"/><stop offset="100%" stop-color="#d4960a"/></radialGradient>
+        <radialGradient id="gHydra"  cx="35%" cy="35%" r="65%"><stop offset="0%" stop-color="#c8d8ff"/><stop offset="100%" stop-color="#2244cc"/></radialGradient>
+        <radialGradient id="gAnem"   cx="35%" cy="35%" r="65%"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#ddddee"/></radialGradient>
+        <radialGradient id="gMag"    cx="35%" cy="35%" r="65%"><stop offset="0%" stop-color="#ffe8f0"/><stop offset="100%" stop-color="#f0a0c0"/></radialGradient>
+        <radialGradient id="gSun"    cx="35%" cy="35%" r="65%"><stop offset="0%" stop-color="#ffee88"/><stop offset="100%" stop-color="#e8820a"/></radialGradient>
+        <radialGradient id="leafG"   x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2d6030"/><stop offset="100%" stop-color="#163318"/></radialGradient>
+      </defs>
+
+      <!-- STEMS -->
+      <g stroke="#2d6030" stroke-width="2.2" fill="none" stroke-linecap="round">
+        <path d="M230 244 Q222 210 210 180"/>
+        <path d="M230 244 Q228 208 228 172"/>
+        <path d="M230 244 Q236 210 244 180"/>
+        <path d="M230 244 Q218 212 192 190"/>
+        <path d="M230 244 Q240 212 262 190"/>
+        <path d="M230 244 Q212 215 168 202"/>
+        <path d="M230 244 Q246 215 282 204"/>
+        <path d="M230 244 Q208 218 148 215"/>
+        <path d="M230 244 Q250 218 306 215"/>
+      </g>
+
+      <!-- LEAVES -->
+      <g fill="url(#leafG)" opacity=".9">
+        <ellipse cx="188" cy="200" rx="22" ry="7"  transform="rotate(-40 188 200)"/>
+        <ellipse cx="266" cy="202" rx="22" ry="7"  transform="rotate(38 266 202)"/>
+        <ellipse cx="162" cy="212" rx="17" ry="6"  transform="rotate(-55 162 212)"/>
+        <ellipse cx="286" cy="210" rx="17" ry="6"  transform="rotate(52 286 210)"/>
+        <ellipse cx="200" cy="188" rx="15" ry="5"  transform="rotate(-24 200 188)"/>
+        <ellipse cx="256" cy="190" rx="15" ry="5"  transform="rotate(25 256 190)"/>
+        <path d="M144 216 Q136 206 148 202 Q156 204 144 216Z" opacity=".85"/>
+        <path d="M310 214 Q320 204 308 200 Q300 202 310 214Z" opacity=".85"/>
+      </g>
+
+      <!-- RIBBON -->
+      <path d="M206 242 Q230 232 254 242 Q242 250 230 247 Q218 250 206 242Z" fill="#9922aa" opacity=".82"/>
+      <path d="M206 242 Q192 254 186 262" stroke="#9922aa" stroke-width="2.2" fill="none" opacity=".65"/>
+      <path d="M254 242 Q268 254 274 262" stroke="#9922aa" stroke-width="2.2" fill="none" opacity=".65"/>
+
+      <!-- 1. RED ROSE — center -->
+      <g transform="translate(230,145)">
+        <circle r="25" fill="url(#gRose)"/>
+        <ellipse rx="14" ry="9"  cy="-8"  fill="#dd2244" opacity=".8"/>
+        <ellipse rx="11" ry="7"  cx="10"  cy="4"  fill="#c41830" opacity=".72" transform="rotate(58)"/>
+        <ellipse rx="11" ry="7"  cx="-10" cy="4"  fill="#c41830" opacity=".72" transform="rotate(-58)"/>
+        <ellipse rx="9"  ry="6"  cy="11"  fill="#a81028" opacity=".65"/>
+        <circle  r="7"   cy="2"  fill="#ff8899" opacity=".4"/>
+        <circle  r="3.5"         fill="#ffcccc" opacity=".7"/>
+        <path d="M-6 20 Q0 16 6 20 Q4 26 0 24 Q-4 26 -6 20Z" fill="#226622" opacity=".6"/>
+      </g>
+
+      <!-- 2. PEONY — left -->
+      <g transform="translate(190,162)">
+        <circle r="21" fill="url(#gPeony)"/>
+        <ellipse rx="11" ry="7"  cy="-7"  fill="#ee6699" opacity=".75"/>
+        <ellipse rx="10" ry="6"  cx="8"   cy="4"  fill="#dd4477" opacity=".7"  transform="rotate(55)"/>
+        <ellipse rx="10" ry="6"  cx="-8"  cy="4"  fill="#dd4477" opacity=".7"  transform="rotate(-55)"/>
+        <ellipse rx="8"  ry="5"  cx="7"   cy="-2" fill="#ee88aa" opacity=".65" transform="rotate(110)"/>
+        <ellipse rx="8"  ry="5"  cx="-7"  cy="-2" fill="#ee88aa" opacity=".65" transform="rotate(-110)"/>
+        <ellipse rx="7"  ry="4"  cy="9"   fill="#cc3366" opacity=".6"/>
+        <circle  r="5"   cy="1"  fill="#ffccdd" opacity=".5"/>
+        <circle  r="2.5"         fill="#fff0f5" opacity=".75"/>
+      </g>
+
+      <!-- 3. ORCHID — right -->
+      <g transform="translate(268,165)">
+        <ellipse rx="20" ry="8"  fill="#aa66ee" opacity=".72" transform="rotate(10)"/>
+        <ellipse rx="20" ry="8"  fill="#aa66ee" opacity=".72" transform="rotate(-30)"/>
+        <ellipse rx="8"  ry="13" cy="-11" fill="url(#gOrchid)" opacity=".85"/>
+        <ellipse rx="7"  ry="11" cx="10"  cy="-6" fill="#cc99ff" opacity=".75" transform="rotate(28)"/>
+        <ellipse rx="7"  ry="11" cx="-10" cy="-6" fill="#cc99ff" opacity=".75" transform="rotate(-28)"/>
+        <ellipse rx="6"  ry="9"  cy="7"   fill="#9944dd" opacity=".8"/>
+        <circle  r="4"           fill="#440088" opacity=".6"/>
+        <circle  r="1.8"         fill="#ffeeFF" opacity=".8"/>
+      </g>
+
+      <!-- 4. DAHLIA — far left -->
+      <g transform="translate(160,186)">
+        <g fill="url(#gDahlia)" opacity=".85">
+          <ellipse rx="5" ry="13" transform="rotate(0)"/>
+          <ellipse rx="5" ry="13" transform="rotate(30)"/>
+          <ellipse rx="5" ry="13" transform="rotate(60)"/>
+          <ellipse rx="5" ry="13" transform="rotate(90)"/>
+          <ellipse rx="5" ry="13" transform="rotate(120)"/>
+          <ellipse rx="5" ry="13" transform="rotate(150)"/>
+        </g>
+        <g fill="#dd5522" opacity=".78">
+          <ellipse rx="4" ry="9" transform="rotate(15)"/>
+          <ellipse rx="4" ry="9" transform="rotate(45)"/>
+          <ellipse rx="4" ry="9" transform="rotate(75)"/>
+          <ellipse rx="4" ry="9" transform="rotate(105)"/>
+          <ellipse rx="4" ry="9" transform="rotate(135)"/>
+          <ellipse rx="4" ry="9" transform="rotate(165)"/>
+        </g>
+        <circle r="5" fill="#ff8844" opacity=".7"/>
+        <circle r="2" fill="#ffddaa" opacity=".8"/>
+      </g>
+
+      <!-- 5. TULIP — far right -->
+      <g transform="translate(296,188)">
+        <path d="M0 -18 Q12 -12 14 2 Q10 16 0 18 Q-10 16 -14 2 Q-12 -12 0 -18Z" fill="url(#gTulip)" opacity=".9"/>
+        <path d="M0 -18 Q6 -10 6 4 Q3 14 0 18" fill="#bb7700" opacity=".35"/>
+        <path d="M0 -18 Q-6 -10 -6 4 Q-3 14 0 18" fill="#bb7700" opacity=".35"/>
+        <circle r="3" fill="#886600" opacity=".7"/>
+        <circle r="1.2" fill="#ffeeaa" opacity=".8"/>
+      </g>
+
+      <!-- 6. HYDRANGEA — top left -->
+      <g transform="translate(206,126)">
+        <g fill="url(#gHydra)">
+          <g transform="translate(-8,-8)"><ellipse rx="5" ry="3" fill="#6688ff" opacity=".7"/><ellipse rx="3" ry="5" fill="#6688ff" opacity=".7"/></g>
+          <g transform="translate(8,-8)"><ellipse rx="5" ry="3" fill="#5577ee" opacity=".7"/><ellipse rx="3" ry="5" fill="#5577ee" opacity=".7"/></g>
+          <g transform="translate(-8,8)"><ellipse rx="5" ry="3" fill="#7799ff" opacity=".7"/><ellipse rx="3" ry="5" fill="#7799ff" opacity=".7"/></g>
+          <g transform="translate(8,8)"><ellipse rx="5" ry="3" fill="#5566dd" opacity=".7"/><ellipse rx="3" ry="5" fill="#5566dd" opacity=".7"/></g>
+          <g transform="translate(0,0)"><ellipse rx="5" ry="3" fill="#aabbff" opacity=".65"/><ellipse rx="3" ry="5" fill="#aabbff" opacity=".65"/></g>
+        </g>
+        <circle r="3.5" fill="#99aaff" opacity=".5"/>
+      </g>
+
+      <!-- 7. ANEMONE — top right -->
+      <g transform="translate(252,122)">
+        <g fill="url(#gAnem)" opacity=".9">
+          <ellipse rx="8" ry="14" cy="-6" transform="rotate(0)"/>
+          <ellipse rx="8" ry="14" cy="-6" transform="rotate(60)"/>
+          <ellipse rx="8" ry="14" cy="-6" transform="rotate(120)"/>
+          <ellipse rx="8" ry="14" cy="-6" transform="rotate(180)"/>
+          <ellipse rx="8" ry="14" cy="-6" transform="rotate(240)"/>
+          <ellipse rx="8" ry="14" cy="-6" transform="rotate(300)"/>
+        </g>
+        <circle r="7" fill="#220055" opacity=".88"/>
+        <g fill="#aa88ff" opacity=".9">
+          <circle r="1.5" cx="0"   cy="-4"/>
+          <circle r="1.5" cx="3"   cy="-2"/>
+          <circle r="1.5" cx="3"   cy="2"/>
+          <circle r="1.5" cx="0"   cy="4"/>
+          <circle r="1.5" cx="-3"  cy="2"/>
+          <circle r="1.5" cx="-3"  cy="-2"/>
+        </g>
+        <circle r="2" fill="#eeddff" opacity=".7"/>
+      </g>
+
+      <!-- 8. MAGNOLIA — outer left -->
+      <g transform="translate(142,204)">
+        <g fill="url(#gMag)" opacity=".88">
+          <ellipse rx="9" ry="16" cy="-8" transform="rotate(0)"/>
+          <ellipse rx="9" ry="16" cy="-8" transform="rotate(72)"/>
+          <ellipse rx="9" ry="16" cy="-8" transform="rotate(144)"/>
+          <ellipse rx="9" ry="16" cy="-8" transform="rotate(216)"/>
+          <ellipse rx="9" ry="16" cy="-8" transform="rotate(288)"/>
+        </g>
+        <g fill="#ffddee" opacity=".75">
+          <ellipse rx="6" ry="11" cy="-6" transform="rotate(36)"/>
+          <ellipse rx="6" ry="11" cy="-6" transform="rotate(108)"/>
+          <ellipse rx="6" ry="11" cy="-6" transform="rotate(180)"/>
+          <ellipse rx="6" ry="11" cy="-6" transform="rotate(252)"/>
+          <ellipse rx="6" ry="11" cy="-6" transform="rotate(324)"/>
+        </g>
+        <circle r="5" fill="#cc8899" opacity=".65"/>
+        <circle r="2" fill="#fff0f4" opacity=".8"/>
+      </g>
+
+      <!-- 9. SUNFLOWER — outer right -->
+      <g transform="translate(314,204)">
+        <g fill="url(#gSun)" opacity=".88">
+          <ellipse rx="5" ry="14" transform="rotate(0)"/>
+          <ellipse rx="5" ry="14" transform="rotate(22.5)"/>
+          <ellipse rx="5" ry="14" transform="rotate(45)"/>
+          <ellipse rx="5" ry="14" transform="rotate(67.5)"/>
+          <ellipse rx="5" ry="14" transform="rotate(90)"/>
+          <ellipse rx="5" ry="14" transform="rotate(112.5)"/>
+          <ellipse rx="5" ry="14" transform="rotate(135)"/>
+          <ellipse rx="5" ry="14" transform="rotate(157.5)"/>
+        </g>
+        <circle r="8" fill="#331100" opacity=".9"/>
+        <g fill="#553300" opacity=".6">
+          <circle r="1.2" cx="0"    cy="-4"/>
+          <circle r="1.2" cx="3.5"  cy="-2"/>
+          <circle r="1.2" cx="3.5"  cy="2"/>
+          <circle r="1.2" cx="0"    cy="4"/>
+          <circle r="1.2" cx="-3.5" cy="2"/>
+          <circle r="1.2" cx="-3.5" cy="-2"/>
+        </g>
+        <circle r="2.5" fill="#ffcc44" opacity=".4"/>
+      </g>
+
+      <!-- Baby's breath -->
+      <g fill="white">
+        <circle cx="174" cy="158" r="2.8" opacity=".7"/>
+        <circle cx="169" cy="168" r="2"   opacity=".6"/>
+        <circle cx="280" cy="156" r="2.8" opacity=".7"/>
+        <circle cx="287" cy="166" r="2"   opacity=".6"/>
+        <circle cx="230" cy="104" r="3"   opacity=".7"/>
+        <circle cx="218" cy="108" r="1.8" opacity=".6"/>
+        <circle cx="242" cy="108" r="1.8" opacity=".6"/>
+        <circle cx="132" cy="196" r="2.2" opacity=".6"/>
+        <circle cx="322" cy="196" r="2.2" opacity=".6"/>
+      </g>
+
+      <!-- Gold sparkles -->
+      <g fill="#ffd700" opacity=".85">
+        <path d="M0,-7 L1.5,-2 L7,-2 L2.5,1 L4,6.5 L0,3.5 L-4,6.5 L-2.5,1 L-7,-2 L-1.5,-2Z" transform="translate(118,112)"/>
+        <path d="M0,-7 L1.5,-2 L7,-2 L2.5,1 L4,6.5 L0,3.5 L-4,6.5 L-2.5,1 L-7,-2 L-1.5,-2Z" transform="translate(338,108)"/>
+        <path d="M0,-6 L1.3,-2 L6,-2 L2,1 L3.5,6 L0,3 L-3.5,6 L-2,1 L-6,-2 L-1.3,-2Z"       transform="translate(230,96)"/>
+      </g>
+
+      <ellipse cx="230" cy="242" rx="100" ry="5" fill="#9922bb" opacity=".1"/>
+    </svg>
+  </div>
+
+  <div class="body">
+    <div class="orn"><div class="ol"></div><div class="og"></div><div class="ol"></div></div>
+    <div class="name">Nikki Kamath</div>
+    <div class="poem">
+      <p>may your life bloom endlessly,<br>and every moment fill with light.</p>
+      <span class="wish">Happy Birthday</span>
+    </div>
+    <div class="orn2"><div class="ol"></div><div class="og"></div><div class="ol"></div></div>
+  </div>
+</div>
+
+<script>
+const c=document.getElementById('stars');
+for(let i=0;i<60;i++){
+  const s=document.createElement('div');s.className='s';
+  const z=Math.random()*1.9+.5;
+  Object.assign(s.style,{width:z+'px',height:z+'px',left:Math.random()*100+'%',top:Math.random()*100+'%',animationDuration:(Math.random()*3.5+1.2)+'s',animationDelay:(Math.random()*5)+'s'});
+  c.appendChild(s);
+}
+</script>
+</body>
+</html>
